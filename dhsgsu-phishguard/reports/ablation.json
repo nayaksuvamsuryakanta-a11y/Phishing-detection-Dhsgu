@@ -1,0 +1,21 @@
+{
+  "domain_whitelist_only": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "roc_auc": 1.0
+  },
+  "classifier_without_domain_signal": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "roc_auc": 1.0
+  },
+  "full_pipeline": {
+    "accuracy": 1.0,
+    "f1": 1.0,
+    "roc_auc": 1.0
+  }
+}

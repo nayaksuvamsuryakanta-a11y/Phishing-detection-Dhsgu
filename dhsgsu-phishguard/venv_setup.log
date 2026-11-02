@@ -1,0 +1,6 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.2
+[notice] To update, run: C:\Users\nayak\Desktop\Intership Projects\Phishing detection Dhsgu\dhsgsu-phishguard\.venv\Scripts\python.exe -m pip install --upgrade pip
+ERROR: Invalid requirement: '': Expected package name at the start of dependency specifier
+    
+    ^
