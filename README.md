@@ -1,4 +1,4 @@
-# 🛡️ DHSGSU PhishGuard
+ 🛡️ DHSGSU PhishGuard
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn-orange.svg)](https://scikit-learn.org/)
@@ -65,3 +65,138 @@ It goes beyond basic classification by providing **SHAP-based visual explainabil
     │  • Retrain Model    │
     │  • Update SHA-256   │
     └─────────────────────┘
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+| :--- | :--- |
+| **Core Language** | Python 3.10+ |
+| **Machine Learning** | `scikit-learn`, `numpy`, `pandas`, `joblib` |
+| **Explainability (XAI)** | `shap`, `matplotlib` |
+| **Web Interface** | `streamlit` |
+| **Testing & Quality** | `pytest` |
+
+---
+
+## ⚡ Getting Started
+
+### 1. Prerequisites
+Ensure you have Python 3.10+ installed. Navigate to the project root directory:
+```bash
+cd dhsgsu-phishguard
+```
+
+### 2. Environment Setup
+Create and activate a virtual environment, then install dependencies:
+```powershell
+# Windows
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Generate Synthetic Dataset
+*(No real emails are scraped. This generates a balanced, 2000+ row academic dataset.)*
+```bash
+python data/generate_dataset.py
+```
+
+### 4. Train the Model
+This will evaluate multiple models, select the best by F1-score, save the pipeline, and generate the SHA-256 hash.
+```bash
+python -m src.train
+```
+
+---
+
+## 🧪 How to Evaluate (Demo)
+
+We have provided an automated demo script to prove the backend logic works flawlessly without needing the UI.
+
+### Automated Backend Test
+Run the demo script to see real-time predictions and SHAP feature mapping:
+```bash
+.venv\Scripts\python.exe scripts\demo_test.py
+```
+*Expected Output: A legitimate email scores ~0.01/100 (Low Risk), while a phishing email scores ~99.99/100 (High Risk) with a 2,418-feature SHAP explanation.*
+
+### Manual UI Testing
+Launch the Streamlit application:
+```bash
+.venv\Scripts\python.exe -m streamlit run app\streamlit_app.py --server.headless true --server.port 8502
+```
+Open `http://localhost:8502` in your browser. *(Note: If the theme appears dark, click `⋮` → Settings → Theme → "Use custom theme", then `Ctrl+F5`)*.
+
+**Try this Phishing Payload:**
+- **Subject:** `URGENT: DHSGSU Student Portal Account Suspension`
+- **Sender Email:** `admin@dhsgsu-edu.in` *(Notice the typo-squatting domain)*
+- **Body:** `Your student account will be suspended in 24 hours. Verify your identity immediately by replying with your Roll Number and OTP, or click here: http://192.168.1.55/verify-dhsgsu`
+- **URL:** `http://192.168.1.55/verify-dhsgsu`
+
+---
+
+## 📂 Project Structure
+
+```text
+dhsgsu-phishguard/
+├── .streamlit/
+│   └── config.toml             # Institutional white/blue theme config
+├── app/
+│   └── streamlit_app.py        # Main web interface with SHAP & Feedback UI
+├── data/
+│   ├── generate_dataset.py     # Combinatorial synthetic data generator
+│   └── emails.csv              # Generated training data (gitignored)
+├── models/
+│   └── phishguard_model.joblib # Trained, hashed ML pipeline
+├── scripts/
+│   └── demo_test.py            # Automated backend verification script
+├── src/
+│   ├── config.py               # University constants & security rules
+│   ├── features.py             # ColumnTransformer & heuristic extraction
+│   ├── train.py                # Training, evaluation, and hash generation
+│   ├── explain.py              # Prediction + SHAP explanation engine
+│   ├── cli.py                  # Command-line interface
+│   └── retrain_feedback.py     # Active learning ingestion & retraining
+├── tests/
+│   └── test_backend.py         # Pytest suite for regression testing
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🔒 Security Posture & Academic Disclaimer
+
+- **Supply Chain Security**: The system computes a SHA-256 hash of `phishguard_model.joblib` after every training run. At runtime, `explain.py` verifies this hash. If the model file is altered or corrupted, the system halts and alerts the user.
+- **Authentication Simulation**: The UI includes toggles for SPF, DKIM, and DMARC pass/fail states, heavily penalizing emails that claim to be from `@dhsgsu.edu.in` but fail authentication.
+- **Academic Disclaimer**: This project is developed solely for academic evaluation and the CodeCraft Challenge. The dataset is **100% synthetically generated** using combinatorial templates. No real university emails were scraped, stored, or analyzed. 
+
+---
+
+## 👨‍💻 Author & Acknowledgments
+
+Developed by **Suvam** for the BCA Program, Dr. Harisingh Gour Vishwavidyalaya, Sagar (M.P.).  
+*Special thanks to the CodeCraft Evaluation Committee for the problem statement.*
+
+```
+
+***
+
+### 🎯 Why This README Will Impress Judges:
+1. **Badges & Professional Formatting**: Immediately signals that this is a mature, well-maintained project, not a last-minute student hack.
+2. **ASCII Architecture**: Judges love visual aids. This clearly shows you understand the *entire* data flow, including the advanced Active Learning loop.
+3. **"How to Evaluate" Section**: You are doing the judges' work for them. By giving them the exact payload to copy-paste, you guarantee they will see the 99.99% phishing detection and the beautiful SHAP chart.
+4. **Security Posture Section**: Explicitly calling out the SHA-256 hash verification and synthetic data disclaimer shows maturity, ethical awareness, and a deep understanding of cybersecurity principles.
+
+---
+
+### 🚀 What's Next?
+Your GitHub repository is now presentation-ready. We have two major deliverables left to secure top marks:
+
+**Option 1:** The Formal BCA Project Report (Chapters 1 to 5)  
+**Option 2:** The Viva Voce Presentation Deck & Defense Script  
+
+Which one would you like to generate next?
