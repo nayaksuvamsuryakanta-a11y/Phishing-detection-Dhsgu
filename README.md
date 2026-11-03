@@ -181,19 +181,9 @@ dhsgsu-phishguard/
 Developed by **Suvam** for the BCA Program, Dr. Harisingh Gour Vishwavidyalaya, Sagar (M.P.).  
 *Special thanks to the CodeCraft Evaluation Committee for the problem statement.*
 
-```
 
-***
 
-### 🎯 Why This README Will Impress Judges:
-1. **Badges & Professional Formatting**: Immediately signals that this is a mature, well-maintained project, not a last-minute student hack.
-2. **ASCII Architecture**: Judges love visual aids. This clearly shows you understand the *entire* data flow, including the advanced Active Learning loop.
-3. **"How to Evaluate" Section**: You are doing the judges' work for them. By giving them the exact payload to copy-paste, you guarantee they will see the 99.99% phishing detection and the beautiful SHAP chart.
-4. **Security Posture Section**: Explicitly calling out the SHA-256 hash verification and synthetic data disclaimer shows maturity, ethical awareness, and a deep understanding of cybersecurity principles.
 
----
-
-### 🚀 What's Next?
 Your GitHub repository is now presentation-ready. We have two major deliverables left to secure top marks:
 
 **Option 1:** The Formal BCA Project Report (Chapters 1 to 5)  
