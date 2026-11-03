@@ -1,4 +1,4 @@
- 🛡️ DHSGSU PhishGuard
+# 🛡️ DHSGSU PhishGuard
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn-orange.svg)](https://scikit-learn.org/)
